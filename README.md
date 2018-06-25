@@ -234,5 +234,3 @@ end
   	<a href="/signup">회원가입</a>
   <% end %>
   ```
-
-   
