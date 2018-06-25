@@ -1,0 +1,11 @@
+<h1>Comments#create</h1>
+<p>Find me in app/views/comments/create.html.erb</p>
+
+<form action="/comment/<%=@comment.id%>" method="post">
+  <input type="hidden" name="_method" value="put" />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
+
+  제목 : <input type="text" name="title" value="<%=@post.title%>"/><br />
+  내용 : <textarea type="text" name="content"><%=@post.content%></textarea><br />
+  <input type="submit" value="얍" />
+</form>

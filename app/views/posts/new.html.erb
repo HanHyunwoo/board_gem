@@ -1,0 +1,8 @@
+<form action="/posts" method="post">
+
+  제목 : <input type="text" name="title"/><br />
+  내용 : <textarea name="content"></textarea><br />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>"/>
+  <input type="submit" value="얍" />
+
+</form>
