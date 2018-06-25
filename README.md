@@ -233,4 +233,8 @@ end
   	<a href="/login">로그인</a>
   	<a href="/signup">회원가입</a>
   <% end %>
+<<<<<<< HEAD:README.md
   ```
+=======
+  ```
+>>>>>>> 73eb70d73060d39285443ff5d456fc620e9ca07a:README.rdoc
