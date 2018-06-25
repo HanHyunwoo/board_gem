@@ -1,4 +1,3 @@
-```
 ### ASKED : rails new asked / rails s -b 0.0.0.0
 
 * posts 컨트롤러 `rails g controller posts index new create show edit update destroy` 
@@ -57,7 +56,7 @@
 
 #### [Rails 기본 라우팅](https://guides.rorlab.org/routing.html#%EB%A6%AC%EC%86%8C%EC%8A%A4-%EA%B8%B0%EB%B0%98%EC%9C%BC%EB%A1%9C-%EB%9D%BC%EC%9A%B0%ED%8C%85%ED%95%98%EA%B8%B0-rails%EC%9D%98-%EA%B8%B0%EB%B3%B8)
 
-​```ruby
+```ruby
 # config/routes.rb
 # index
 get 'posts' => 'posts#index'
@@ -71,11 +70,11 @@ get 'posts/:id/edit' => 'posts#edit'
 put 'posts/:id/' => 'posts#update'
 # CRUD - D
 delete 'posts/:id' => 'posts#destroy'
-​```
+```
 
-​```ruby
+```ruby
 resources :posts
-​```
+```
 
 * REST API를 구성하는 기본 원칙
   1. URL은 정보의 자원을 표현한다.
@@ -83,26 +82,26 @@ resources :posts
 
 #### form에서 post 요청 보내기
 
-​```erb
+```erb
 <!-- app/views/posts/new.html.erb -->
 <form action="/posts" method="post">
     ..
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     ..
 </form>
-​```
+```
 
-​```ruby
+```ruby
 # app/controllers/application_controller.rb
 protect_from_forgery with: :exception
-​```
+```
 
 * form post 요청에서 token이 없으면, 오류가 발생함.
   토큰을 사용하는 이유는 CSRF 공격을 방지하기 위해서임.
 
 #### put, delete 요청 보내기
 
-​```erb
+```erb
 <!-- app/views/posts/edit.html.erb -->
 <form action="/posts/<%=@post.id%>" method="post">
     ..
@@ -110,11 +109,11 @@ protect_from_forgery with: :exception
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     ..
 </form>
-​```
+```
 
-​```erb
+```erb
 <a href="/posts/<%=@post.id%>" data-method="delete" data-confirm="정말 삭제할래?">삭제하기</a>
-​```
+```
 
 #### [Database relation(association)](https://guides.rorlab.org/association_basics.html)
 
@@ -177,7 +176,7 @@ protect_from_forgery with: :exception
 
 #### login
 
-​```ruby
+```ruby
 # app/controllers/sessions_controller.rb
 def new # get '/login'
 end
@@ -190,17 +189,17 @@ end
 def destroy # get '/logout'
    session.clear 
 end
-​```
+```
 
 #### before filter : 컨트롤러
 
-​```ruby
+```ruby
 # app/controllers/posts_controller.rb
 # authorize 메소드를 실행하는데, 여기 모든 액션 중에 index를 제외하고 실행
 before_action :authorize, except: [:index]
-​```
+```
 
-​```ruby
+```ruby
 # app/controllers/application_controller.rb
 def authorize
    unless current_user
@@ -208,11 +207,11 @@ def authorize
        redirect_to '/'
    end
 end
-​```
+```
 
 #### helper method
 
-​```ruby
+```ruby
 # app/controllers/application_controller.rb
 
 # view에서도 활용가능한 메소드로 만드는 법
@@ -222,7 +221,7 @@ def current_user
    # @user에 값이 있으면, 디비에 쿼리를 날리지 않는다.
    @user ||= User.find(params[:id]) if session[:user_id]
 end
-​```
+```
 
 * 뷰에서 활용
 
@@ -235,5 +234,3 @@ end
   	<a href="/signup">회원가입</a>
   <% end %>
   ```
-```
-
